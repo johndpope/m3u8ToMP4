@@ -41,6 +41,7 @@ extension FirstViewController{
 //        let string2 = Resource.document() + "/2.mp4"
         let string1 = NSBundle.mainBundle().pathForResource("1", ofType: "mp4")
         let string2 = NSBundle.mainBundle().pathForResource("2", ofType: "mp4")
+        //ts文件可以在mac下用QuickTime打开，但在iOS平台下却不行，可以学学Mac开发 在OSX平台上试试。
 //        let string1 = NSBundle.mainBundle().pathForResource("112", ofType: "ts")
 //        let string2 = NSBundle.mainBundle().pathForResource("113", ofType: "ts")
         print(string1!+"\n"+string2!)
@@ -58,7 +59,7 @@ extension FirstViewController{
         
         let trackArray1 = videoAsset1.tracksWithMediaType(AVMediaTypeVideo)
         print(trackArray1)
-        let track1 = trackArray1[0]
+        let track1 = trackArray1[0]//这里没做异常处理，遇到不支持的格式时数组为空，比如换成ts文件
         let timeRange1 = CMTimeRangeMake(kCMTimeZero, videoAsset1.duration)
         do {
             try compositionTrack1.insertTimeRange(timeRange1, ofTrack: track1, atTime: kCMTimeZero)
