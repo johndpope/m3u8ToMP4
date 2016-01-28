@@ -14,13 +14,20 @@ M3U8文件是指UTF-8编码格式的M3U文件。M3U文件是记录了一个索�
 ####2、本地搭建服务器
 使用[CocoaHTTPServer](https://github.com/robbiehanson/CocoaHTTPServer)在本地搭建个服务器，把M3U8内的视频索引换为本地相对路径。这个Demo还没有出，以后有空实验下。
 ####3、拿到本地缓存的视频片段挨个播放
-AVPlayerItem，一个视频对应一个item同时创建两个item来回切换着播放，[AVQueuePlayer insertItem:afterItem:]这样应该可以做无缝切换视频,还没有试验。Demo暂时还没
+AVPlayerItem，一个视频对应一个item同时创建两个item来回切换着播放，[AVQueuePlayer insertItem:afterItem:]这样应该可以做无缝切换视频,~~还没有试验。Demo暂时还没~~ 
+刚刚测试，这样切换播放两段视频可以无缝切换,请看Demo里第二个Controller 2016-01-27 18:32:10
+这样方案1、2都没有多大必要了。方案1的好处是可以拼接一个完整的视频出来。
+
 
 ```
 AVFoundation.FrameWork非常强大,除了音视频播放外，
 还有音频、视频的拼接、剪切功能，视频的音频提取等功能，
 有兴趣的可以深入研究。
 ```
+
+这里有一个高端的视频拼接方案
+拥有多种视频拼接方法： 上下拼接，左右拼接， 上上下下/左左右右式拼接。
+感兴趣的自己看 [Github地址](https://github.com/xujingzhou/VideoSplice)
 
 ###最近在土豆上看到了一个非常棒的纪录片
 在用土豆APP缓存视频的时候产生了一个想法：

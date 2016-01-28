@@ -56,4 +56,18 @@ class SecondViewController: UIViewController {
     }
 }
 
+extension SecondViewController{
+    @IBAction func onClickPlayFirstButton(){
+        let string = NSBundle.mainBundle().pathForResource("1", ofType: "mp4")
 
+        let url = NSURL.fileURLWithPath(string!)
+        playerView.playVideoWithURL(url)
+
+    }
+    @IBAction func onClickAddItem(){
+        let string = NSBundle.mainBundle().pathForResource("2", ofType: "mp4")
+        let url = NSURL.fileURLWithPath(string!)
+        playerView.addItem(url)
+
+    }
+}
