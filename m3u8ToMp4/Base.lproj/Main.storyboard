@@ -101,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="645" y="-322"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -189,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="645" y="348"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -204,11 +204,89 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="LZs-Yq-PNG" kind="relationship" relationship="viewControllers" id="WJd-LT-PWK"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-138" y="-26"/>
+        </scene>
+        <!--Third-->
+        <scene sceneID="0ud-s6-Xfb">
+            <objects>
+                <viewController title="Third" id="LZs-Yq-PNG" customClass="ThirdViewController" customModule="m3u8ToMp4" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bxh-km-li2"/>
+                        <viewControllerLayoutGuide type="bottom" id="gpc-ED-uui"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HIK-TB-oPM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHB-A3-lSL" customClass="PlayerView" customModule="m3u8ToMp4" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="560" height="289"/>
+                                <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="289" id="yXa-RE-18r"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server状态" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oa4-jm-RCK">
+                                <rect key="frame" x="200" y="335" width="200" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Kpk-vg-uRF"/>
+                                    <constraint firstAttribute="width" constant="200" id="bS8-Vf-6uX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFs-bQ-ebb">
+                                <rect key="frame" x="263" y="380" width="73" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="3zd-E1-TUx"/>
+                                    <constraint firstAttribute="height" constant="30" id="A41-N8-73W"/>
+                                </constraints>
+                                <state key="normal" title="启动server"/>
+                                <connections>
+                                    <action selector="onClickStartServerButton" destination="LZs-Yq-PNG" eventType="touchUpInside" id="sey-U4-ygv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CVE-4M-Esu">
+                                <rect key="frame" x="270" y="440" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Y8z-HI-i7T"/>
+                                    <constraint firstAttribute="height" constant="30" id="aRt-kO-5ug"/>
+                                </constraints>
+                                <state key="normal" title="播放视频"/>
+                                <connections>
+                                    <action selector="onClickPlayVideoButton" destination="LZs-Yq-PNG" eventType="touchUpInside" id="hMf-oa-cAd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CVE-4M-Esu" firstAttribute="top" secondItem="FFs-bQ-ebb" secondAttribute="bottom" constant="30" id="0tD-hF-n9B"/>
+                            <constraint firstItem="FFs-bQ-ebb" firstAttribute="centerX" secondItem="HIK-TB-oPM" secondAttribute="centerX" id="1gM-23-vX2"/>
+                            <constraint firstItem="CVE-4M-Esu" firstAttribute="centerX" secondItem="HIK-TB-oPM" secondAttribute="centerX" id="DsB-1F-z51"/>
+                            <constraint firstItem="bHB-A3-lSL" firstAttribute="top" secondItem="bxh-km-li2" secondAttribute="bottom" id="Gzm-4E-CWQ"/>
+                            <constraint firstItem="bHB-A3-lSL" firstAttribute="leading" secondItem="HIK-TB-oPM" secondAttribute="leadingMargin" id="MLQ-lo-FJn"/>
+                            <constraint firstItem="oa4-jm-RCK" firstAttribute="top" secondItem="bHB-A3-lSL" secondAttribute="bottom" constant="26" id="OuF-6V-KOs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bHB-A3-lSL" secondAttribute="trailing" id="Tau-2N-uGI"/>
+                            <constraint firstItem="bHB-A3-lSL" firstAttribute="centerX" secondItem="HIK-TB-oPM" secondAttribute="centerX" id="Vhb-bt-sgC"/>
+                            <constraint firstItem="FFs-bQ-ebb" firstAttribute="top" secondItem="oa4-jm-RCK" secondAttribute="bottom" constant="24" id="brx-W7-plm"/>
+                            <constraint firstItem="oa4-jm-RCK" firstAttribute="centerX" secondItem="HIK-TB-oPM" secondAttribute="centerX" id="vHl-4y-EMf"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Third" image="first" id="Tjr-85-Pbm"/>
+                    <connections>
+                        <outlet property="playerView" destination="bHB-A3-lSL" id="sUT-1L-rgF"/>
+                        <outlet property="startServerButton" destination="FFs-bQ-ebb" id="NZu-2F-BNX"/>
+                        <outlet property="statusLabel" destination="oa4-jm-RCK" id="g8w-pI-Mnx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b39-T0-c6x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="645" y="1016"/>
         </scene>
     </scenes>
     <resources>

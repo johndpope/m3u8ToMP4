@@ -24,15 +24,16 @@ class SecondViewController: UIViewController {
     @IBAction func onClickPlay(){
         let bundle = NSBundle.mainBundle()
 //        let resourcePath = bundle.pathForResource("112", ofType: "ts")
-        let resourcePath = bundle.pathForResource("welcome_2", ofType: "mp4")
+//        let resourcePath = bundle.pathForResource("welcome_2", ofType: "mp4")
 //        let resourcePath = bundle.pathForResource("112", ofType: "avi")
 //        let resourcePath = bundle.pathForResource("112", ofType: "mp4")
+        let resourcePath = bundle.pathForResource("fileSequence0", ofType: "ts")
 
-//        let url = NSURL.fileURLWithPath(resourcePath!)
-        let url = NSURL(string: "http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8")
-        print(url?.absoluteString)
+        let url = NSURL.fileURLWithPath(resourcePath!)
+//        let url = NSURL(string: "http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8")
+        print(url.absoluteString)
 
-        playerView.playVideoWithURL(url!)
+        playerView.playVideoWithURL(url)
     }
     
     @IBAction func onClickPlayDocumentResource(){
