@@ -1,6 +1,10 @@
 # m3u8ToMP4
-这个Demo暂时是简单的使用AVFoundation.FrameWork拼接视频
 [GitHub地址](https://github.com/xyqjay/m3u8ToMP4)
+
+* ~~这个Demo暂时~~ DEMO里第一个Controller是简单的使用AVFoundation.FrameWork拼接视频
+* 第二个Controller里是AVPlayerItem无缝切换播放两段视频 2016-01-29 11:00:19
+* 第三个controller是本地起个轻量级服务器来播放m3u8视频 2016-01-29 11:00:37
+
 
 ###最近在研究m3u8的播放和缓存,所以工程名称是m3u8ToMP4
 
@@ -12,7 +16,8 @@ M3U8文件是指UTF-8编码格式的M3U文件。M3U文件是记录了一个索�
 ####1、视频拼接
 把下载下来的视频片段拼接起来，这个Demo就是MP4的拼接。
 ####2、本地搭建服务器
-使用[CocoaHTTPServer](https://github.com/robbiehanson/CocoaHTTPServer)在本地搭建个服务器，把M3U8内的视频索引换为本地相对路径。这个Demo还没有出，以后有空实验下。
+使用[CocoaHTTPServer](https://github.com/robbiehanson/CocoaHTTPServer)在本地搭建个服务器，把M3U8内的视频索引换为本地相对路径。~~这个Demo还没有出，以后有空实验下。~~
+这个已经测试成功，在Demo里的第三个Controller。2016-01-29 11:01:45
 ####3、拿到本地缓存的视频片段挨个播放
 AVPlayerItem，一个视频对应一个item同时创建两个item来回切换着播放，[AVQueuePlayer insertItem:afterItem:]这样应该可以做无缝切换视频,~~还没有试验。Demo暂时还没~~ 
 刚刚测试，这样切换播放两段视频可以无缝切换,请看Demo里第二个Controller 2016-01-27 18:32:10
@@ -28,6 +33,7 @@ AVFoundation.FrameWork非常强大,除了音视频播放外，
 这里有一个高端的视频拼接方案
 拥有多种视频拼接方法： 上下拼接，左右拼接， 上上下下/左左右右式拼接。
 感兴趣的自己看 [Github地址](https://github.com/xujingzhou/VideoSplice)
+
 
 ###最近在土豆上看到了一个非常棒的纪录片
 在用土豆APP缓存视频的时候产生了一个想法：
