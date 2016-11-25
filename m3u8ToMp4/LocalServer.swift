@@ -10,7 +10,7 @@ import Foundation
 
 class LocalServer: HTTPServer {
 //var ips = Dictionary()
-    private var isInit = false
+    fileprivate var isInit = false
     
     required override init() {
         super.init()
@@ -20,13 +20,13 @@ class LocalServer: HTTPServer {
     }
     
     func initNotifications(){
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LocalServer.HTTPConnectionDidDie(_:)), name: HTTPConnectionDidDieNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LocalServer.HTTPConnectionDidDie(_:)), name: NSNotification.Name(rawValue: HTTPConnectionDidDieNotification), object: nil)
     }
     
     func initHTTPServer(){
         // MARK 这里prot 写死的  资源地址写死的，可以根据需要修改。。。
         setPort(8888)
-        setDocumentRoot(NSBundle.mainBundle().pathForResource("-xmMKEjZjmk", ofType: nil))
+        setDocumentRoot(Bundle.main.path(forResource: "-xmMKEjZjmk", ofType: nil))
         setType("_http._tcp.")
         setConnectionClass(HTTPConnection.self)
         isInit = true
@@ -50,7 +50,7 @@ class LocalServer: HTTPServer {
 }
 
 extension LocalServer{
-    func HTTPConnectionDidDie(notification:NSNotification){
+    func HTTPConnectionDidDie(_ notification:Notification){
         
     }
 }

@@ -35,7 +35,7 @@ extension ThirdViewController {
 //        let url = NSURL(string: "http://127.0.0.1:8888/-xmMKEjZjmk/index.m3u8")
 //        let url = NSURL(string: "http://127.0.0.1:8888/index.m3u8")
 //        let url = NSURL(string: "http://127.0.0.1:8888/-xmMKEjZjmk/index2.m3u8")
-        let url = NSURL(string: "http://127.0.0.1:8888/index2.m3u8")
+        let url = URL(string: "http://127.0.0.1:8888/index2.m3u8")
 //        var resourcePath = NSBundle.mainBundle().pathForResource("-xmMKEjZjmk", ofType: nil)
 //        resourcePath = resourcePath! + "/index2.m3u8"
 //        let url = NSURL.fileURLWithPath(resourcePath!)

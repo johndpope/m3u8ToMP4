@@ -36,7 +36,7 @@ class TestViewController: UIViewController {
 //        var surveyAnswer: String?
         // surveyAnswer 被自动设置为 nil
         
-        if let firstNumber = Int("4"), secondNumber = Int("42") where firstNumber < secondNumber {
+        if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber {
             print("\(firstNumber) < \(secondNumber)")
         }
         // prints "4 < 42"
@@ -50,13 +50,13 @@ class TestViewController: UIViewController {
         let names = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
         
         
-        func backwards(s1: String, s2: String) -> Bool {
+        func backwards(_ s1: String, s2: String) -> Bool {
             return s1 > s2
         }
-        var reversed = names.sort(backwards)
+        var reversed = names.sorted(by: backwards)
         // reversed 为 ["Ewa", "Daniella", "Chris", "Barry", "Alex"]
         
-        reversed = names.sort({ (s1: String, s2: String) -> Bool in
+        reversed = names.sorted(by: { (s1: String, s2: String) -> Bool in
             return s1 > s2
         })
 //            {
@@ -70,24 +70,24 @@ class TestViewController: UIViewController {
 //        }
 //        由于这个闭包的函数体部分如此短，以至于可以将其改写成一行代码：
         
-        reversed = names.sort( { (s1: String, s2: String) -> Bool in return s1 > s2 } )
+        reversed = names.sorted( by: { (s1: String, s2: String) -> Bool in return s1 > s2 } )
         
 //        根据上下文推断类型（Inferring Type From Context）
-        reversed = names.sort( { s1, s2 in return s1 > s2 } )
+        reversed = names.sorted( by: { s1, s2 in return s1 > s2 } )
 //        单表达式闭包隐式返回（Implicit Return From Single-Expression Clossures）
-        reversed = names.sort( { s1, s2 in s1 > s2 } )
+        reversed = names.sorted( by: { s1, s2 in s1 > s2 } )
         
 //        参数名称缩写（Shorthand Argument Names）
-        reversed = names.sort( { $0 > $1 } )
+        reversed = names.sorted( by: { $0 > $1 } )
 //运算符函数（Operator Functions）
-        reversed = names.sort(>)
+        reversed = names.sorted(by: >)
 
 //        在闭包表达式语法一节中作为sort(_:)方法参数的字符串排序闭包可以改写为：
-        reversed = names.sort() { $0 > $1 }
+        reversed = names.sorted() { $0 > $1 }
 
     }
     
-    func someFunctionThatTakesAClosure(closure: () -> Void) {
+    func someFunctionThatTakesAClosure(_ closure: () -> Void) {
         // 函数体部分
     }
     
@@ -101,23 +101,24 @@ class TestViewController: UIViewController {
 //    // 闭包主体部分
 //    }
     
-    func testMap(){
-        let digitNames = [
-            0: "Zero", 1: "One", 2: "Two",   3: "Three", 4: "Four",
-            5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine"
-        ]
-        let numbers = [16, 58, 510]
-        
-        let strings = numbers.map {
-            (var number) -> String in
-            var output = ""
-            while number > 0 {
-                output = digitNames[number % 10]! + output
-                number /= 10
-            }
-            return output
-        }
-        // strings 常量被推断为字符串类型数组，即 [String]
-        // 其值为 ["OneSix", "FiveEight", "FiveOneZero"]
-    }
+    //囧need study swift 3.0
+//    func testMap(){
+//        let digitNames = [
+//            0: "Zero", 1: "One", 2: "Two",   3: "Three", 4: "Four",
+//            5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine"
+//        ]
+//        let numbers = [16, 58, 510]
+//        
+//        let strings = numbers.map {
+//            (number) -> String in
+//            var output = ""
+//            while number > 0 {
+//                output = digitNames[number % 10]! + output
+//                number /= 10
+//            }
+//            return output
+//        }
+//        // strings 常量被推断为字符串类型数组，即 [String]
+//        // 其值为 ["OneSix", "FiveEight", "FiveOneZero"]
+//    }
 }

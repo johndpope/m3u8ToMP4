@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 class PlayerView: UIView {
-    let toolBar = NSBundle.mainBundle().loadNibNamed("PlayerViewToolBar",
+    let toolBar = Bundle.main.loadNibNamed("PlayerViewToolBar",
         owner: nil,
         options: nil)!.first as! PlayerViewToolBar
     
@@ -28,7 +28,7 @@ class PlayerView: UIView {
         super.init(coder: aDecoder)
         print("...................")
         
-        backgroundColor = UIColor.blackColor()
+        backgroundColor = UIColor.black
         
         let selfLayer = layer as! AVPlayerLayer
         selfLayer.player = player
@@ -67,7 +67,7 @@ class PlayerView: UIView {
     
     var timeObserverToken: AnyObject?
     
-   override class func layerClass() -> AnyClass {
+   override class var layerClass : AnyClass {
         return AVPlayerLayer.self
     }
 
@@ -79,12 +79,12 @@ class PlayerView: UIView {
 }
 extension PlayerView{
     
-    func playVideoWithURL(url:NSURL){
-        let asset = AVURLAsset(URL: url, options: nil)
+    func playVideoWithURL(_ url:URL){
+        let asset = AVURLAsset(url: url, options: nil)
         let playerItem = AVPlayerItem(asset: asset, automaticallyLoadedAssetKeys: PlayerView.assetKeysRequiredToPlay)
 //        let playerItem = AVPlayerItem.init(URL: url)
 //        addObserverForItem(playerItem)
-        player.replaceCurrentItemWithPlayerItem(playerItem)
+        player.replaceCurrentItem(with: playerItem)
 
 //        player = AVQueuePlayer.init(playerItem: playerItem)
 //        addObserverForPlayer()
@@ -92,18 +92,18 @@ extension PlayerView{
         player.rate = 1.0
     }
     
-    func addItem(url:NSURL){
-        let asset = AVURLAsset(URL: url, options: nil)
+    func addItem(_ url:URL){
+        let asset = AVURLAsset(url: url, options: nil)
         let playerItem = AVPlayerItem(asset: asset, automaticallyLoadedAssetKeys: PlayerView.assetKeysRequiredToPlay)
 //        let playerItem = AVPlayerItem.init(URL: url)
 //        addObserverForItem(playerItem)
 
-        player.insertItem(playerItem, afterItem: player.currentItem)
+        player.insert(playerItem, after: player.currentItem)
     }
     func addObserver(){
-        addObserver(self, forKeyPath: "player.rate", options: [.New, .Initial], context: &playerViewControllerKVOContext)
-        addObserver(self, forKeyPath: "player.currentItem.duration", options: [.New, .Initial], context: &playerViewControllerKVOContext)
-        addObserver(self, forKeyPath: "player.currentItem.status", options: [.New, .Initial], context: &playerViewControllerKVOContext)
+        addObserver(self, forKeyPath: "player.rate", options: [.new, .initial], context: &playerViewControllerKVOContext)
+        addObserver(self, forKeyPath: "player.currentItem.duration", options: [.new, .initial], context: &playerViewControllerKVOContext)
+        addObserver(self, forKeyPath: "player.currentItem.status", options: [.new, .initial], context: &playerViewControllerKVOContext)
     }
     
     var duration: Double {
@@ -122,7 +122,7 @@ extension PlayerView{
         func availableDuration() -> Double
         {
             if let range = player.currentItem?.loadedTimeRanges.first {
-                return CMTimeGetSeconds(CMTimeRangeGetEnd(range.CMTimeRangeValue))
+                return CMTimeGetSeconds(CMTimeRangeGetEnd(range.timeRangeValue))
             }
             return 0
         }
@@ -180,7 +180,7 @@ extension PlayerView{
         
         let time = CMTimeMake(1, 1)
         
-        timeObserverToken = player.addPeriodicTimeObserverForInterval(time, queue:dispatch_get_main_queue()) {
+        timeObserverToken = player.addPeriodicTimeObserver(forInterval: time, queue:DispatchQueue.main) {
             [weak self] timex in
             if let weakSelf = self {
                 if weakSelf.duration != 0 {
@@ -188,23 +188,23 @@ extension PlayerView{
                     weakSelf.toolBar.updateTimelabel(CMTimeGetSeconds(timex), totalTime: weakSelf.duration)
                 }
             }
-        }
+        } as AnyObject?
     }
 }
 
 extension PlayerView{
-    func playerItemDidReachEnd(notification :NSNotification){
+    func playerItemDidReachEnd(_ notification :Notification){
         
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard context == &playerViewControllerKVOContext else {
-            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
             return
         }
         
         if keyPath == "player.rate" {
-            let newRate = (change?[NSKeyValueChangeNewKey] as! NSNumber).doubleValue
+            let newRate = (change?[NSKeyValueChangeKey.newKey] as! NSNumber).doubleValue
             if newRate == 0.0 {
                 toolBar.isPlaying(false)
             } else {
@@ -213,8 +213,8 @@ extension PlayerView{
 
         }else if keyPath == "player.currentItem.duration" {
             let newDuration: CMTime
-            if let newDurationAsValue = change?[NSKeyValueChangeNewKey] as? NSValue {
-                newDuration = newDurationAsValue.CMTimeValue
+            if let newDurationAsValue = change?[NSKeyValueChangeKey.newKey] as? NSValue {
+                newDuration = newDurationAsValue.timeValue
             }
             else {
                 newDuration = kCMTimeZero
@@ -226,32 +226,32 @@ extension PlayerView{
 //            toolBar.currentValue(Float(hasValidDuration ? currentTime / duration : 0.0))
         }else if keyPath == "player.currentItem.status" {
             let newStatus: AVPlayerItemStatus
-            if let newStatusAsNumber = change?[NSKeyValueChangeNewKey] as? NSNumber {
-                newStatus = AVPlayerItemStatus(rawValue: newStatusAsNumber.integerValue)!
+            if let newStatusAsNumber = change?[NSKeyValueChangeKey.newKey] as? NSNumber {
+                newStatus = AVPlayerItemStatus(rawValue: newStatusAsNumber.intValue)!
             }
             else {
-                newStatus = .Unknown
+                newStatus = .unknown
             }
             
-            if newStatus == .Failed {
+            if newStatus == .failed {
                 loadingState = false
                 //MARK
                 //播放失败
             }
-            else if newStatus == .ReadyToPlay {
+            else if newStatus == .readyToPlay {
                 loadingState = false
                 if let asset = player.currentItem?.asset {
                     
                     for key in PlayerView.assetKeysRequiredToPlay {
                         var error: NSError?
-                        if asset.statusOfValueForKey(key, error: &error) == .Failed {
+                        if asset.statusOfValue(forKey: key, error: &error) == .failed {
                             //MARK
                             //播放失败
                             return
                         }
                     }
                     
-                    if !asset.playable || asset.hasProtectedContent {
+                    if !asset.isPlayable || asset.hasProtectedContent {
                         //MARK
                         //播放失败
                         return
@@ -286,10 +286,10 @@ extension PlayerView{
         toolBar.translatesAutoresizingMaskIntoConstraints = false
         addSubview(toolBar)
         toolBar.delegate = self
-        let constraintTop = NSLayoutConstraint(item: toolBar, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1, constant: 0)
-        let constraintLeft = NSLayoutConstraint(item: toolBar, attribute: .Left, relatedBy: .Equal, toItem: self, attribute: .Left, multiplier: 1, constant: 0)
-        let constraintRight = NSLayoutConstraint(item: toolBar, attribute: .Right, relatedBy: .Equal, toItem: self, attribute: .Right, multiplier: 1, constant: 0)
-        let constraintBottom = NSLayoutConstraint(item: toolBar, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1, constant: 0)
+        let constraintTop = NSLayoutConstraint(item: toolBar, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0)
+        let constraintLeft = NSLayoutConstraint(item: toolBar, attribute: .left, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: 0)
+        let constraintRight = NSLayoutConstraint(item: toolBar, attribute: .right, relatedBy: .equal, toItem: self, attribute: .right, multiplier: 1, constant: 0)
+        let constraintBottom = NSLayoutConstraint(item: toolBar, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0)
         self.addConstraints([constraintTop,constraintLeft,constraintRight,constraintBottom])
     }
 }

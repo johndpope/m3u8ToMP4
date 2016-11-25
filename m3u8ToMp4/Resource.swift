@@ -9,7 +9,7 @@
 import Foundation
 class Resource {
     class func document() -> String{
-        let document = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let document = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentString = document[0]
         print(documentString)
         return documentString
@@ -17,7 +17,7 @@ class Resource {
 
     class func resourceForTS() -> String{
         var string = ""
-        let document = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let document = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentString = document[0]
         print(documentString)
 //        let resource = documentString + "/6xvKVNFv9UI/index.m3u8"

@@ -20,13 +20,13 @@ class PlayerViewToolBar: UIView {
     
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         
         
     }
     
     override func awakeFromNib() {
-        slider.setThumbImage(UIImage(named: "thumbImage"), forState: UIControlState.Normal)
+        slider.setThumbImage(UIImage(named: "thumbImage"), for: UIControlState())
     }
     override func didMoveToSuperview() {
         //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC))), dispatch_get_main_queue()) { () -> Void in
@@ -35,17 +35,17 @@ class PlayerViewToolBar: UIView {
     }
 }
 extension PlayerViewToolBar{
-    func isPlaying(value:Bool){
+    func isPlaying(_ value:Bool){
         if value {
-            playPauseButton.setTitle("暂停", forState: UIControlState.Normal)
+            playPauseButton.setTitle("暂停", for: UIControlState())
         }else{
-            playPauseButton.setTitle("播放", forState: UIControlState.Normal)
+            playPauseButton.setTitle("播放", for: UIControlState())
         }
     }
-    func currentValue(value: Float){
+    func currentValue(_ value: Float){
         slider.value = value
     }
-    func updateTimelabel(currentTime:Double,totalTime:Double){
+    func updateTimelabel(_ currentTime:Double,totalTime:Double){
         print("\(currentTime)    \(totalTime)")
         let currentTimeString = currentTime.secondsDescription()
         let totalTimeString = totalTime.secondsDescription()
@@ -53,19 +53,19 @@ extension PlayerViewToolBar{
         
         let attribute = NSMutableAttributedString.init(string: string);
         
-        let dictionary1:[String:AnyObject] = [NSFontAttributeName:UIFont.systemFontOfSize(11),
+        let dictionary1:[String:AnyObject] = [NSFontAttributeName:UIFont.systemFont(ofSize: 11),
             NSForegroundColorAttributeName:UIColor(red: 153, green: 153, blue: 153, alpha: 1)]
-        let range1 = (string as NSString).rangeOfString(currentTimeString)
+        let range1 = (string as NSString).range(of: currentTimeString)
         attribute.addAttributes(dictionary1, range: range1)
         
-        let dictionary2:[String:AnyObject] = [NSFontAttributeName:UIFont.systemFontOfSize(11),
-            NSForegroundColorAttributeName:UIColor.blackColor()]
-        let range2 = (string as NSString).rangeOfString("/"+totalTimeString)
+        let dictionary2:[String:AnyObject] = [NSFontAttributeName:UIFont.systemFont(ofSize: 11),
+            NSForegroundColorAttributeName:UIColor.black]
+        let range2 = (string as NSString).range(of: "/"+totalTimeString)
         attribute.addAttributes(dictionary2, range: range2)
         attribute.endEditing()
         timeTabel.attributedText = attribute
     }
-    func loadedProgress(value: Float){
+    func loadedProgress(_ value: Float){
         
     }
     
@@ -77,7 +77,7 @@ extension Double{
             return ""
         }
         let minute = Int(self/60)
-        let second = Int(self%60)
+        let second = Int(self.truncatingRemainder(dividingBy: 60))
         var string1 = ""
         var string2 = ""
         if minute < 10 {
@@ -99,17 +99,17 @@ extension PlayerViewToolBar{
 }
 extension PlayerViewToolBar{
     func hideBar(){
-        UIView.animateWithDuration(0.35, animations: { () -> Void in
+        UIView.animate(withDuration: 0.35, animations: { () -> Void in
             self.bottomBar.alpha = 0.0
-            }) { (result) -> Void in
+            }, completion: { (result) -> Void in
                 //
-        }
+        }) 
     }
     func showBar(){
-        UIView.animateWithDuration(0.35) { () -> Void in
+        UIView.animate(withDuration: 0.35, animations: { () -> Void in
             self.bottomBar.alpha = 1.0
             
-        }
+        }) 
     }
 }
 extension PlayerViewToolBar{

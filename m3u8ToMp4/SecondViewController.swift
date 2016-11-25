@@ -22,14 +22,14 @@ class SecondViewController: UIViewController {
     }
 
     @IBAction func onClickPlay(){
-        let bundle = NSBundle.mainBundle()
+        let bundle = Bundle.main
 //        let resourcePath = bundle.pathForResource("112", ofType: "ts")
 //        let resourcePath = bundle.pathForResource("welcome_2", ofType: "mp4")
 //        let resourcePath = bundle.pathForResource("112", ofType: "avi")
 //        let resourcePath = bundle.pathForResource("112", ofType: "mp4")
-        let resourcePath = bundle.pathForResource("fileSequence0", ofType: "ts")
+        let resourcePath = bundle.path(forResource: "fileSequence0", ofType: "ts")
 
-        let url = NSURL.fileURLWithPath(resourcePath!)
+        let url = URL(fileURLWithPath: resourcePath!)
 //        let url = NSURL(string: "http://devimages.apple.com.edgekey.net/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8")
         print(url.absoluteString)
 
@@ -37,18 +37,18 @@ class SecondViewController: UIViewController {
     }
     
     @IBAction func onClickPlayDocumentResource(){
-        let document = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let document = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentString = document[0]
         print(documentString)
         let resource = documentString + "/6xvKVNFv9UI/index.m3u8"
-        let url = NSURL.fileURLWithPath(resource)
+        let url = URL(fileURLWithPath: resource)
         playerView.playVideoWithURL(url)
         print(url.absoluteString)
        var string =  NSString()
-        string = string.stringByAppendingPathComponent("6xvKVNFv9UI")
+        string = string.appendingPathComponent("6xvKVNFv9UI") as NSString
     
         do {
-            string = try NSString(contentsOfFile: resource, encoding: NSUTF8StringEncoding) as String
+            string = try NSString(contentsOfFile: resource, encoding: String.Encoding.utf8.rawValue) as String as String as NSString
         } catch {
             print("Unable to register webserver \(error)")
         }
@@ -59,15 +59,15 @@ class SecondViewController: UIViewController {
 
 extension SecondViewController{
     @IBAction func onClickPlayFirstButton(){
-        let string = NSBundle.mainBundle().pathForResource("1", ofType: "mp4")
+        let string = Bundle.main.path(forResource: "1", ofType: "mp4")
 
-        let url = NSURL.fileURLWithPath(string!)
+        let url = URL(fileURLWithPath: string!)
         playerView.playVideoWithURL(url)
 
     }
     @IBAction func onClickAddItem(){
-        let string = NSBundle.mainBundle().pathForResource("2", ofType: "mp4")
-        let url = NSURL.fileURLWithPath(string!)
+        let string = Bundle.main.path(forResource: "2", ofType: "mp4")
+        let url = URL(fileURLWithPath: string!)
         playerView.addItem(url)
 
     }
