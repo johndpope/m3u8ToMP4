@@ -48,7 +48,7 @@ extension FirstViewController{
         
         let url1 = NSURL.fileURLWithPath(string1!)
         let url2 = NSURL.fileURLWithPath(string2!)
-        print(url1.absoluteString+"\n"+url2.absoluteString)
+        print(url1.absoluteString!+"\n"+url2.absoluteString!)
         
         let composition = AVMutableComposition()
         

@@ -41,11 +41,12 @@
 		69DC925F1C51D27E0042E646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69DC925D1C51D27E0042E646 /* LaunchScreen.storyboard */; };
 		69DC92671C51D6990042E646 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DC92661C51D6990042E646 /* PlayerView.swift */; };
 		69DC92691C51DE740042E646 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DC92681C51DE740042E646 /* TestViewController.swift */; };
-		BD12AB3A1AB22E7142BEB728 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 511246C8CD1F18D510D2D607 /* libPods.a */; };
+		A0AD06FD8164A05720545FAB /* libPods-m3u8ToMp4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA458B16CCBDBF46B63E8544 /* libPods-m3u8ToMp4.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		511246C8CD1F18D510D2D607 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0ADB81A4112E66943769AC7D /* Pods-m3u8ToMp4.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-m3u8ToMp4.debug.xcconfig"; path = "Pods/Target Support Files/Pods-m3u8ToMp4/Pods-m3u8ToMp4.debug.xcconfig"; sourceTree = "<group>"; };
+		27D7CEC92E282A748C8EFCFD /* Pods-m3u8ToMp4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-m3u8ToMp4.release.xcconfig"; path = "Pods/Target Support Files/Pods-m3u8ToMp4/Pods-m3u8ToMp4.release.xcconfig"; sourceTree = "<group>"; };
 		6965FA361C5875BA0005F404 /* PlayerViewToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewToolBar.swift; sourceTree = "<group>"; };
 		6965FA381C5876B70005F404 /* PlayerViewToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewToolBar.xib; sourceTree = "<group>"; };
 		6965FA3B1C59C1CA0005F404 /* thumbImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbImage@2x.png"; sourceTree = "<group>"; };
@@ -84,8 +85,7 @@
 		69DC92601C51D27E0042E646 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69DC92661C51D6990042E646 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		69DC92681C51DE740042E646 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		763A4E5B7ADA5B6159ECF11F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		8DEED6BB4A51CDDD89DFA183 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		DA458B16CCBDBF46B63E8544 /* libPods-m3u8ToMp4.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-m3u8ToMp4.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD12AB3A1AB22E7142BEB728 /* libPods.a in Frameworks */,
+				A0AD06FD8164A05720545FAB /* libPods-m3u8ToMp4.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,7 +103,7 @@
 		2F0D1DC62C9683E32E5A7FE0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				511246C8CD1F18D510D2D607 /* libPods.a */,
+				DA458B16CCBDBF46B63E8544 /* libPods-m3u8ToMp4.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -229,8 +229,8 @@
 		B339F2AA527DC20ACEFAD2DE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8DEED6BB4A51CDDD89DFA183 /* Pods.debug.xcconfig */,
-				763A4E5B7ADA5B6159ECF11F /* Pods.release.xcconfig */,
+				0ADB81A4112E66943769AC7D /* Pods-m3u8ToMp4.debug.xcconfig */,
+				27D7CEC92E282A748C8EFCFD /* Pods-m3u8ToMp4.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -242,11 +242,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 69DC92631C51D27E0042E646 /* Build configuration list for PBXNativeTarget "m3u8ToMp4" */;
 			buildPhases = (
-				F9C8DEA720ECD0BC85A43CF5 /* Check Pods Manifest.lock */,
+				F9C8DEA720ECD0BC85A43CF5 /* [CP] Check Pods Manifest.lock */,
 				69DC924B1C51D27E0042E646 /* Sources */,
 				69DC924C1C51D27E0042E646 /* Frameworks */,
 				69DC924D1C51D27E0042E646 /* Resources */,
-				3C33801026C433D9530810BF /* Copy Pods Resources */,
+				3C33801026C433D9530810BF /* [CP] Copy Pods Resources */,
+				B34E5DFB8472B673CBE91FB4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -269,6 +270,7 @@
 				TargetAttributes = {
 					69DC924E1C51D27E0042E646 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0810;
 					};
 				};
 			};
@@ -325,29 +327,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3C33801026C433D9530810BF /* Copy Pods Resources */ = {
+		3C33801026C433D9530810BF /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-m3u8ToMp4/Pods-m3u8ToMp4-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F9C8DEA720ECD0BC85A43CF5 /* Check Pods Manifest.lock */ = {
+		B34E5DFB8472B673CBE91FB4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-m3u8ToMp4/Pods-m3u8ToMp4-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9C8DEA720ECD0BC85A43CF5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,7 +497,7 @@
 		};
 		69DC92641C51D27E0042E646 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8DEED6BB4A51CDDD89DFA183 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 0ADB81A4112E66943769AC7D /* Pods-m3u8ToMp4.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -490,12 +507,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "m3u8ToMp4/m3u8ToMp4-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
 		69DC92651C51D27E0042E646 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 763A4E5B7ADA5B6159ECF11F /* Pods.release.xcconfig */;
+			baseConfigurationReference = 27D7CEC92E282A748C8EFCFD /* Pods-m3u8ToMp4.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -504,6 +522,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.imooc.m3u8ToMp4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "m3u8ToMp4/m3u8ToMp4-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

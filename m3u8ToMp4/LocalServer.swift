@@ -20,7 +20,7 @@ class LocalServer: HTTPServer {
     }
     
     func initNotifications(){
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("HTTPConnectionDidDie:"), name: HTTPConnectionDidDieNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LocalServer.HTTPConnectionDidDie(_:)), name: HTTPConnectionDidDieNotification, object: nil)
     }
     
     func initHTTPServer(){

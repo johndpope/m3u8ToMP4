@@ -11,7 +11,7 @@ import AVFoundation
 class PlayerView: UIView {
     let toolBar = NSBundle.mainBundle().loadNibNamed("PlayerViewToolBar",
         owner: nil,
-        options: nil).first as! PlayerViewToolBar
+        options: nil)!.first as! PlayerViewToolBar
     
     var playerViewControllerKVOContext = 0
 
